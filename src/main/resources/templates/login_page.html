@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Login - CleanEase Laundry System</title>
+    <link rel="icon" type="image/png" href="/images/laundry-machine.png">
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+    <style>
+        body {
+            animation: colorChange 3s infinite alternate;
+        }
+        @keyframes colorChange {
+            0% {
+                background-color: rgba(217, 83, 79, 0.85);
+            }
+            25% {
+                background-color: rgba(200, 60, 60, 0.85);
+            }
+            50% {
+                background-color: rgba(180, 40, 40, 0.85);
+            }
+            75% {
+                background-color: rgba(200, 60, 60, 0.85);
+            }
+            100% {
+                background-color: rgba(217, 83, 79, 0.85);
+            }
+        }
+        .navbar {
+            background-color: #d9534f;
+        }
+        .navbar-brand,
+        .navbar-nav .nav-link {
+            color: white !important;
+        }
+        .navbar-toggler {
+            border-color: white;
+        }
+        .navbar-toggler-icon {
+            background-color: white;
+        }
+        .form-container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: white; /* Fixed white background */
+        }
+        .form-container h2 {
+            margin-bottom: 20px;
+            color: #d9534f;
+        }
+        .form-container .btn-primary {
+            background-color: #d9534f;
+            border-color: #d9534f;
+        }
+        .form-container .btn-primary:hover {
+            background-color: #c9302c;
+            border-color: #c9302c;
+        }
+        .footer {
+            background-color: #f8d7da;
+            padding: 1rem;
+            text-align: center;
+        }
+        .footer a {
+            margin: 0 10px;
+            color: #d9534f;
+            text-decoration: none;
+        }
+        .footer a:hover {
+            color: #c9302c;
+        }
+    </style>
+</head>
+<body>
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light">
+    <a class="navbar-brand" th:href="@{/index}">
+        <img src="/images/laundry-machine.png" width="40" height="40" class="d-inline-block align-top" alt="CleanEase Logo">
+        CleanEase
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/index}">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/login}">Login</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/register}">Register</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/track/order}">Track Order</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<!-- Login Form -->
+<div class="form-container">
+    <img src="/images/login.png" width="50" height="50" style="margin-left: 250px">
+    <h2 style="text-align: center">Login to Your Account</h2>
+
+    <!-- Flash message -->
+    <div th:if="${message}" class="alert alert-success" role="alert" style="margin-top: 20px;">
+        <span th:text="${message}"></span>
+    </div>
+
+    <form th:action="@{/login/user}" method="post">
+        <div class="form-group">
+            <label for="email">Email address</label>
+            <input type="email" class="form-control" id="email" name="email" required>
+        </div>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" id="password" name="password" required>
+        </div>
+        <p><a th:href="@{/staff/login}" style="color: red; text-align: center">Login As Staff</a> </p>
+        <button type="submit" class="btn btn-primary btn-block">Login</button>
+    </form>
+</div>
+
+<!-- Footer -->
+<footer class="footer">
+    <div>
+        <p>Contact us: contact@cleanease.com | +27 72 484 1337</p>
+        <p>
+            <a href="https://web.facebook.com/pheedy.cecilia">Facebook</a> |
+            <a href="https://wa.me/+27724841337">WhatsApp</a> |
+            <a href="https://www.instagram.com/pheladicecilia2/">Instagram</a>
+        </p>
+        <p>&copy; 2024 CleanEase. All rights reserved.</p>
+    </div>
+</footer>
+
+<!-- Bootstrap JS and dependencies -->
+<script type="text/javascript" th:src="@{/webjars/jquery/jquery.min.js}"></script>
+<script type="text/javascript" th:src="@{/webjars/bootstrap/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>
